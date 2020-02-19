@@ -3,52 +3,72 @@ debugger; // step through loading & testing
 
 // reapeat each character in a string, without changing the order
 function repeatCharacters(str, repetitions) {
-
+	let text = '';
+	if (Number.isNaN(repetitions)) {
+		return 'repetitions must be a number';
+	}
+	if (typeof repetitions === 'number') {
+		for (let letter of str) {
+			for (i = 0; i < repetitions; i++) {
+				text = text + letter;
+			}
+		}
+	} else {
+		return 'repetitions must be a number';
+	}
+	return text;
+	//	if (typeof repetitions === 'number') {
+	//	let text = '';
+	//	for (let letter of str) {
+	//		for (i = 0; i < repetitions; i++) {
+	//				text = text + letter;
+	//			}
+	//		}
+	//	} else {
+	//		return 'repetitions must be a number';
+	//	}
+	//	return text;
 }
-
 // declare and evaluate test cases for repeatCharacters
 const repeatCharactersTests = [
-  { name: 'Test 1', args: ['aaaa', 2], expected: 'aaaaaaaa' },
-  { name: 'Test 2', args: ['fast!', 3], expected: 'fffaaasssttt!!!' },
-  { name: 'Test 3', args: ['They type fast!', 0], expected: '' },
-  { name: 'Test 3', args: ['...', 1], expected: '...' },
-  { name: 'Test 5', args: ['bbbb', NaN], expected: 'repetitions must be a number' },
-  { name: 'Test 6', args: ['hi there', 'x'], expected: 'repetitions must be a number' },
+	{ name: 'Test 1', args: [ 'aaaa', 2 ], expected: 'aaaaaaaa' },
+	{ name: 'Test 2', args: [ 'fast!', 3 ], expected: 'fffaaasssttt!!!' },
+	{ name: 'Test 3', args: [ 'They type fast!', 0 ], expected: '' },
+	{ name: 'Test 4', args: [ '...', 1 ], expected: '...' },
+	{ name: 'Test 5', args: [ 'bbbb', NaN ], expected: 'repetitions must be a number' },
+	{ name: 'Test 6', args: [ 'hi there', 'x' ], expected: 'repetitions must be a number' }
 ];
 for (let test of repeatCharactersTests) {
-  const expected = test.expected;
-  const actual = repeatCharacters(...test.args);
-  const passing = actual === expected;
-  console.assert(passing, test.name);
-  test.actual = actual;
-};
+	const expected = test.expected;
+	const actual = repeatCharacters(...test.args);
+	const passing = actual === expected;
+	console.assert(passing, test.name);
+	test.actual = actual;
+}
 console.log(repeatCharactersTests);
-
 
 // declare handler
 function repeatCharactersHandler() {
-  debugger; // step through user actions
+	debugger; // step through user actions
 
-  // read & process user input
+	// read & process user input
+	const userText = prompt('enter your text!');
+	const count = parseInt(prompt('how many times do you want each character to repeat?'));
+	const numRepeatsIsANumber = typeof numRepeats === 'number';
+	console.assert(numRepeatsIsANumber, 'cast numRepeats to type "number"');
 
-  const numRepeatsIsANumber = typeof numRepeats === 'number';
-  console.assert(numRepeatsIsANumber, 'cast numRepeats to type "number"');
-
-  // execute core logic
-
-  // display result to user
-
-  // log action for developer
-  console.log('\n-- repeatCharacters --');
-  // user inputs
-  // result
+	// execute core logic
+	const result = repeatCharacters(userText, count);
+	// display result to user
+	alert('your text return to : ' + result);
+	// log action for developer
+	console.log('\n-- repeatCharacters --');
+	// user inputs
+	// result
 }
 
 // attach handler to repeatCharacters button with an event listener
 document.getElementById('repeatCharacters-button').addEventListener('click', repeatCharactersHandler);
-
-
-
 
 /* looking for a hint?
   - try using an early return to avoid entering the loop if repetitions isNaN
