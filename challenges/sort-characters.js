@@ -9,53 +9,49 @@ debugger; // step through loading & testing
   to sort strings you rearrange the characters in charCode order
 */
 function sortCharacters(str) {
-
+	return str.split('').sort().join('');
 }
 
 // declare and evaluate test cases for sortCharacters
 const sortCharactersTests = [
-  { name: 'Test 1', args: ['fedcba'], expected: 'abcdef' },
-  { name: 'Test 2', args: ['54321'], expected: '12345' },
-  { name: 'Test 3', args: [''], expected: '' },
-  { name: 'Test 4', args: ['aAbBcC'], expected: 'ABCabc' },
-  { name: 'Test 5', args: [';:,.'], expected: ',.:;' },
-  { name: 'Test 6', args: ['a1b2c3'], expected: '123abc' },
-  { name: 'Test 7', args: ['Walk fast.'], expected: ' .Waafklst' },
+	{ name: 'Test 1', args: [ 'fedcba' ], expected: 'abcdef' },
+	{ name: 'Test 2', args: [ '54321' ], expected: '12345' },
+	{ name: 'Test 3', args: [ '' ], expected: '' },
+	{ name: 'Test 4', args: [ 'aAbBcC' ], expected: 'ABCabc' },
+	{ name: 'Test 5', args: [ ';:,.' ], expected: ',.:;' },
+	{ name: 'Test 6', args: [ 'a1b2c3' ], expected: '123abc' },
+	{ name: 'Test 7', args: [ 'Walk fast.' ], expected: ' .Waafklst' }
 ];
 for (let test of sortCharactersTests) {
-  const expected = test.expected;
-  const actual = sortCharacters(...test.args);
-  const passing = actual === expected;
-  console.assert(passing, test.name);
-  test.actual = actual;
-};
+	const expected = test.expected;
+	const actual = sortCharacters(...test.args);
+	const passing = actual === expected;
+	console.assert(passing, test.name);
+	test.actual = actual;
+}
 console.log(sortCharactersTests);
-
 
 // declare handler
 function sortCharactersHandler() {
-  debugger; // step through user actions
+	debugger; // step through user actions
 
-  // read & process user input
+	// read & process user input
+	const text = prompt('write your text what you want to sort!');
 
+	// execute core logic
+	const result = sortCharacters(text);
 
-  // execute core logic
+	// display result to user
+	alert(result);
 
-
-  // display result to user
-
-
-  // log action for developer
-  console.log('\n-- sortCharacters --');
-  // user inputs
-  // result
+	// log action for developer
+	console.log('\n-- sortCharacters --');
+	// user inputs
+	// result
 }
 
 // attach handler to sortCharacters button with an event listener
 document.getElementById('sortCharacters-button').addEventListener('click', sortCharactersHandler);
-
-
-
 
 /* looking for a hint?
   try solving the challenge in 3 steps:
