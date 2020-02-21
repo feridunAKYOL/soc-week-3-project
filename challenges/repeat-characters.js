@@ -17,17 +17,7 @@ function repeatCharacters(str, repetitions) {
 		return 'repetitions must be a number';
 	}
 	return text;
-	//	if (typeof repetitions === 'number') {
-	//	let text = '';
-	//	for (let letter of str) {
-	//		for (i = 0; i < repetitions; i++) {
-	//				text = text + letter;
-	//			}
-	//		}
-	//	} else {
-	//		return 'repetitions must be a number';
-	//	}
-	//	return text;
+	
 }
 // declare and evaluate test cases for repeatCharacters
 const repeatCharactersTests = [
